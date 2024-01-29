@@ -19,6 +19,25 @@ chmod +x "$GDU_DIR/gdu"
 chmod +x "$GDU_DIR/configure.sh"
 chmod +x "$GDU_DIR/deploy.sh"
 
+# Determine which shell is being used and update the corresponding rc file
+SHELL_RC=""
+
+if [ -n "$ZSH_VERSION" ]; then
+    # User is using Zsh
+    SHELL_RC="$HOME/.zshrc"
+elif [ -n "$BASH_VERSION" ]; then
+    # User is using Bash
+    SHELL_RC="$HOME/.bashrc"
+else
+    # Default to .bashrc if unable to determine shell
+    SHELL_RC="$HOME/.bashrc"
+    echo "Unable to determine shell type. Defaulting to Bash."
+fi
+
 # Add .gdu to PATH
-echo "export PATH=\$PATH:$GDU_DIR" >> "$HOME/.bashrc"
-echo ".gdu directory added to PATH. Please restart your terminal or source .bashrc"
+if ! grep -q "$GDU_DIR" <<< "$(cat $SHELL_RC)"; then
+    echo "export PATH=\$PATH:$GDU_DIR" >> "$SHELL_RC"
+    echo ".gdu directory added to PATH in $SHELL_RC. Please restart your terminal or source your rc file."
+else
+    echo "GDU directory already in PATH in $SHELL_RC"
+fi
