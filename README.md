@@ -13,7 +13,7 @@ GDU is a simple, yet powerful deployment tool designed to streamline the process
 Install GDU with the following command:
 
 ```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/username/GDU/main/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/jmallett6462/GDU/main/install.sh)"
 ```
 
 **Note**: Always ensure you trust scripts before executing them, especially one-liners.

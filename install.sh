@@ -2,7 +2,7 @@
 
 # Define variables
 GDU_DIR="$HOME/.gdu"
-REPO_URL="https://raw.githubusercontent.com/username/GDU/main"
+REPO_URL="https://raw.githubusercontent.com/jmallett6462/GDU/main"
 
 # Create the .gdu directory
 mkdir -p "$GDU_DIR"
